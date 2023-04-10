@@ -16,7 +16,7 @@ Project aims to create a Movie App.
 ```
 006 - Movie App (folder)
 |
-|----readme.md         # Given to the students (Definition of the project)
+|----readme.md         
 SOLUTION
 ├── public
 │     └── index.html
@@ -64,17 +64,8 @@ Build a Movie App using ReactJS.
 
 - ReactJS
 
-### At the end of the project, students will be able to;
-
-- improve coding skills within HTML & CSS & JS & ReactJS.
-
-- use git commands (push, pull, commit, add etc.) and Github as Version Control System.
-
 ## Steps to Solution
 
-- Before start you can watch these tutorials:
-  - https://www.youtube.com/watch?v=9bXhf_TELP4
-  - https://www.youtube.com/watch?v=vDT7EnUpEoo
 - Step 1 : Create React App using `npx create-react-app movie-app` and install firebase `npm i firebase` / `yarn add firebase`
 
 - Step 2 : Signup `https://firebase.google.com/` and create new app in firebase.
@@ -202,8 +193,5 @@ sendPasswordResetEmail(auth, email)
 
 - Step 6: Add project gif to your project and README.md file.
 
-## Notes
-
-- You can add additional functionalities to your app.
 
 **<p align="center">&#9786; Happy Coding &#9997;</p>**
