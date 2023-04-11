@@ -1,11 +1,17 @@
 import React from "react";
-import Register from "./pages/Register";
 import AppRouter from "./router/AppRouter";
+import { userObserver } from "./auth/firebase";
+import AuthContextProvide from "./context/AuthContextProvide";
 
 const App = () => {
+  
+
   return (
     <div>
-      <AppRouter/>
+      <AuthContextProvide>
+       <AppRouter/>
+      </AuthContextProvide>
+      
     </div>
   );
 };

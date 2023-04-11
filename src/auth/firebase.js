@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 
 //* Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,13 +16,45 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
 
-export const createUser=async(email,password)=>{
+//create new users
+export const createUser=async(email,password,navigate,displayName)=>{
   try {
 
    let userCredential= await createUserWithEmailAndPassword(auth, email, password)
-    console.log(userCredential)
+   await updateProfile(auth.currentUser, {
+    displayName: displayName
+  }) 
+   navigate("/")
+   console.log(userCredential)
   } catch (error) {
     console.log(error)
   }
   
+};
+
+//signin for existing users
+export const signIn= async(email, password,navigate)=>{
+  try {
+    signInWithEmailAndPassword(auth, email, password)
+    navigate("/")
+  } catch (error) {
+    console.log(error)
+  }
+};
+
+export const userObserver=(setCurrentUser)=>{
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const {email,displayName,photoURL}=user
+      setCurrentUser({email,displayName,photoURL})
+      console.log(user)
+    } else {
+      setCurrentUser(false);
+      console.log("user signed out")
+    }
+  });
+}
+
+export const logOut=()=>{
+  signOut(auth)
 }
