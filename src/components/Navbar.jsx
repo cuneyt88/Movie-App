@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import avatar from "../assets/icons/avatar.png"
 import { logOut } from "../auth/firebase";
 import { AuthContext } from "../context/AuthContextProvide";
+import Switch from "./Switch";
 
 const Navbar = () => {
   const {currentUser}= useContext(AuthContext)
@@ -15,12 +16,13 @@ const Navbar = () => {
       
         {/* Navbar title */}
         <Link className="pr-2 text-2xl font-semibold text-white" to="/">Bee Movie App</Link>
-      
+        
       {/* Right elements */}
         <div className="relative flex items-center">
-        
+        <Switch/>
         {currentUser && (<h5 className="mr-2 capitalize">{currentUser?.displayName}</h5>)}
         {/* Second dropdown container */}
+        
         <div className="relative" data-te-dropdown-ref>
           {/* Second dropdown trigger */}
           <span className="hidden-arrow flex items-center whitespace-nowrap transition duration-150 ease-in-out motion-reduce:transition-none" id="dropdownMenuButton2" role="button" data-te-dropdown-toggle-ref aria-expanded="false">
